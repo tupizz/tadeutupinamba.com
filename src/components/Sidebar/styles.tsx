@@ -1,10 +1,17 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 export const SidebarWrapper = styled.aside`
   padding: 10px;
   display: flex;
   flex-direction: column;
   height: 100%;
+
+  ${media.lessThan('medium')`
+    padding: 0;
+    flex-direction: row;
+    align-items: center;
+  `}
 `;
 
 export const ProfileAvatarWrapper = styled.div`
@@ -12,6 +19,11 @@ export const ProfileAvatarWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
+
+  ${media.lessThan('medium')`
+    flex-direction: row;
+    margin-top: 0;
+  `}
 
   h1 {
     font-size: 1.5rem;
@@ -32,6 +44,12 @@ export const ProfileAvatarWrapper = styled.div`
     margin-bottom: 20px;
     padding: 5px;
     border: 2px solid #016fb9;
+
+    ${media.lessThan('medium')`
+      height: 60px;
+      width: 60px;
+      margin: 0;
+    `}
   }
 `;
 
@@ -40,6 +58,10 @@ export const SocialMediaLinks = styled.div`
   justify-content: center;
   margin-top: auto;
   margin-bottom: 30px;
+
+  ${media.lessThan('medium')`
+    display: none;
+  `}
 
   a {
     margin-right: 40px;
@@ -63,6 +85,10 @@ export const ItemMenuWrapper = styled.ul`
   margin-top: 40px;
   padding: 0;
 
+  ${media.lessThan('medium')`
+    display: none;
+  `}
+
   li {
     cursor: pointer;
     padding: 15px 0;
@@ -83,6 +109,7 @@ export const ItemMenuWrapper = styled.ul`
       padding-left: 20px;
       font-weight: lighter;
     }
+
     svg {
       margin-left: 20px;
       margin-right: 10px;

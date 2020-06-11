@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import { FiHome, FiPenTool, FiMail, FiCode, FiBook } from 'react-icons/fi';
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { ProfileContext } from './../../context/ProfileContext';
 import * as S from './styles';
 
 const Sidebar: React.FC = () => {
+  const router = useRouter();
   const { profile } = useContext(ProfileContext);
 
   return (
@@ -20,22 +23,22 @@ const Sidebar: React.FC = () => {
       </S.ProfileAvatarWrapper>
 
       <S.ItemMenuWrapper>
-        <li>
+        <li onClick={() => router.push('/')}>
           <FiHome />
           <span>Home</span>
         </li>
 
-        <li>
+        <li onClick={() => router.push('/experiences')}>
           <FiCode />
           <span>Experiences</span>
         </li>
 
-        <li>
+        <li onClick={() => router.push('/education')}>
           <FiBook />
           <span>Education</span>
         </li>
 
-        <li>
+        {/* <li onClick={() => router.push('/projects')}>
           <FiPenTool />
           <span>Projects</span>
         </li>
@@ -43,7 +46,7 @@ const Sidebar: React.FC = () => {
         <li>
           <FiMail />
           <span>Contact</span>
-        </li>
+        </li> */}
       </S.ItemMenuWrapper>
 
       <S.SocialMediaLinks>

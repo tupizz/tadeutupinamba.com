@@ -1,24 +1,26 @@
+import React, { useContext, useEffect } from 'react';
 import { GetStaticProps } from 'next';
-import { useEffect, useContext } from 'react';
 
 import api from '../services/api';
+import { APIResponse } from '../interfaces';
 import { ProfileContext } from '../context/ProfileContext';
-import { APIResponse } from './../interfaces';
-import IndexContent from '../components/IndexContent';
+import EducationContent from '../components/EducationContent';
 
 interface Props {
   profileData: APIResponse;
 }
 
-export default function Home({ profileData }: Props) {
+const EducationPage: React.FC<Props> = ({ profileData }: Props) => {
   const { setProfileToContext } = useContext(ProfileContext);
 
   useEffect(() => {
     setProfileToContext(profileData);
   }, []);
 
-  return <IndexContent />;
-}
+  return <EducationContent />;
+};
+
+export default EducationPage;
 
 export const getStaticProps: GetStaticProps = async (_) => {
   const res = await api.get<APIResponse>('/v1/portfolio/tupizz');

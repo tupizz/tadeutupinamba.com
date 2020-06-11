@@ -1,10 +1,19 @@
 import styled from 'styled-components';
+import media from 'styled-media-query';
 
 export const MainLayoutWrapper = styled.div`
   display: grid;
   grid-template-columns: 300px auto;
   grid-template-rows: 100vh;
   grid-template-areas: 'sidebar conteudo';
+
+  ${media.lessThan('medium')`
+    grid-template-areas: 
+    'sidebar' 
+    'conteudo';
+    grid-template-rows: 80px auto;
+    grid-template-columns: 100vw;
+  `}
 `;
 
 export const Content = styled.div`
@@ -12,6 +21,10 @@ export const Content = styled.div`
   padding: 20px 40px;
   overflow-y: scroll;
   position: relative;
+
+  ${media.lessThan('medium')`
+    padding: 10px 20px;
+  `}
 
   &::after {
     content: '';
@@ -22,8 +35,8 @@ export const Content = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    position: absolute;
-    opacity: 0.1;
+    position: fixed;
+    opacity: 0.07;
     z-index: -1;
   }
 `;
